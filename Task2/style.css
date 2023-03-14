@@ -3,10 +3,10 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: black;
+    background: white;
     width: 15em;
     height: 30em;
-    border: 2px solid red;
+    border: 2px solid #AB9880;
     border-radius: 10px;
     padding: 20px;
 }
@@ -15,7 +15,7 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    background: white;
+    background: black;
     width: 13em;
     height: 28em;
 }
@@ -24,9 +24,9 @@
     position: absolute;
     width: 1.4em;
     height: 1.4em;
-    background-color: black;
+    background-color: white;
     border-radius: 50%;
-    border: 2px solid red;
+    border: 2px solid #AB9880;
     bottom: 0.8%;
     left: 47%;
 }
