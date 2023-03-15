@@ -4,7 +4,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: white;
-    width: 15em;
+    width: 14em;
     height: 30em;
     border: 2px solid #AB9880;
     border-radius: 30px;
@@ -16,7 +16,7 @@
     left: 50%;
     transform: translate(-50%, -50%);
     background: black;
-    width: 13em;
+    width: 15em;
     height: 28em;
 }
 
