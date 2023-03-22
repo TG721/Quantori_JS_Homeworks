@@ -1,10 +1,11 @@
+const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+
 function displayTime(){
     var dateTime = new Date();
     var hrs = dateTime.getHours();
     var mins = dateTime.getMinutes();
 
-    const daysOfWeek = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
-    const months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
     var dayOfWeek = dateTime.getDay();
     var dayOfWeekString = daysOfWeek[dayOfWeek];
     var day = dateTime.getDate();
@@ -18,4 +19,4 @@ function displayTime(){
     document.getElementById('month').innerHTML = monthString;
 }
 
-setInterval(displayTime, 10);
+setInterval(displayTime, 900);
