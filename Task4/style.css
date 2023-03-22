@@ -15,7 +15,7 @@ body {
     width: 14em;
     height: 30em;
     border: 2px solid #AB9880;
-    border-radius: 30px;
+    border-radius: 1.8em;
     padding: 20px;
 }
 #screen {
@@ -45,7 +45,7 @@ body {
     position: absolute;
     width: 2.2em;
     height: 0.2em;
-    border-radius: 30px;
+    border-radius: 10em;
     background-color: black;
     left: 50%;
     transform: translateX(-50%);
@@ -152,7 +152,7 @@ color: black;
     width: 2.1em;
     height: 0.3em;
     transform: translateX(-50%);
-    border-radius: 30px;
+    border-radius: 30em;
 }
 #Rect1 {
     bottom: 9%;
