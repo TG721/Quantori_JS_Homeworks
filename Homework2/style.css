@@ -1,0 +1,89 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+#dvdLogo {
+    width: 13em;
+    height: 13em;
+    position: absolute;
+    top: 2em;
+    left: 0;
+    animation-name: move-image;
+    animation-timing-function: linear;
+    animation-duration: 12s;
+    animation-iteration-count: infinite;
+    position: absolute;
+
+}
+
+#dvdLogo path {
+    fill: red; 
+    animation-name: change-color;
+    animation-duration: 12s;
+    animation-timing-function: step-end;
+    animation-iteration-count: infinite;
+}
+
+
+  
+  @keyframes move-image {
+    0% {
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(calc(100vw - min(220px, 100vw)));
+
+    }
+
+    100% {
+        transform: translateX(0);
+    }
+}
+
+    @keyframes change-color {
+        0%{
+            fill: red;
+        }
+
+        50% {
+            fill: aqua;
+        }
+        100% {
+            fill: red;
+        }
+  }
+
+ @media only screen and (max-width: 1000px) {
+    #dvdLogo { animation-duration: 6s;
+    }
+    #dvdLogo path {
+        animation-duration: 6s;
+    }
+  }
+
+  #laser {
+    visibility: hidden;
+  }
+
+  #quantori {
+    position: absolute;
+    bottom: 0.1em;
+    left: 0.1em;
+    width: 5em;
+    height: 5em;
+    animation: rotate 20s infinite;
+  }
+
+
+    @keyframes rotate {
+        0% {
+            transform: rotate(0deg);
+        }
+    
+        100% {
+            transform: rotate(360deg);
+        }
+}
+
