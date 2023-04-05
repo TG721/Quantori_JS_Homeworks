@@ -1,0 +1,34 @@
+svg {
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+  }
+  
+  #arrow-hour {
+    transform-origin: 50% 50%;
+    animation: rotate-hour 12s linear infinite;
+  }
+  
+  #arrow-minute {
+    transform-origin: 50% 50%;
+    animation: rotate-minute 60s linear infinite;
+  }
+  
+  @keyframes rotate-hour {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+  
+  @keyframes rotate-minute {
+    0% {
+      transform: rotateZ(0deg);
+    }
+    100% {
+      transform: rotateZ(360deg);
+    }
+  }
+  

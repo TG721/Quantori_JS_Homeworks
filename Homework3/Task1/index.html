@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+    <div class="page">
+        <div class="navigation">
+        <div class="navigation__head">
+            <img class="navigation__logo" src="assets/images/clonify.svg" alt="icon of dashboard">
+            <span class="navigation__name">Clonify</span>
+        </div> 
+        <div class="navigation__section">
+        <div class="navigation__title">Dashboard</div>
+            <ul class="navigation__list">
+                <li> <img class="navigation__icon navigation__icon--active" src="assets/images/dashboard.svg" alt="icon of dashboard"><span class="navigation__span navigation__span--active">Dashboard</span><img class="navigation__arrow navigation__arrow--active" src="assets/images/arrow_down.svg" alt="icon of arrow"></li>
+                <li> <img class="navigation__icon" src="assets/images/message.svg" alt="icon of envelope"><span class="navigation__span">Messages</span><img class="navigation__arrow" src="assets/images/arrow_down.svg" alt="icon of arrow"></li>
+                <li> <img class="navigation__icon" src="assets/images/friend.svg" alt="icon of person"><span class="navigation__span">Friends</span><img class="navigation__arrow" src="assets/images/arrow_down.svg" alt="icon of arrow"></li>
+                <li> <img class="navigation__icon" src="assets/images/apps.svg" alt="icon of 4 rectangles"><span class="navigation__span">apps</span><img class="navigation__arrow" src="assets/images/arrow_down.svg" alt="icon of arrow"></li>
+            </ul> 
+        </div>
+    <div class="navigation__section">
+        <div class="navigation__title">Pages</div>
+        <ul class="navigation__list">
+            <li><img class="navigation__icon" src="assets/images/help.svg" alt="icon of a floatation device - Throwable Cushion"><span class="navigation__span">Help Center</span><img class="navigation__arrow" src="assets/images/arrow_down.svg" alt="icon of arrow"></li>
+            <li><img class="navigation__icon" src="assets/images/file.svg" alt="icon of file"><span class="navigation__span">File Manager</span><img class="navigation__arrow" src="assets/images/arrow_down.svg" alt="icon of arrow"></li>
+        </ul> 
+    </div>
+        </div>
+            <div id="rightPartOfPage">
+                <div class="topPanel">
+                    <span class="search">
+                        <form action="/search" method="get">
+                            <input class="search__input" type="text" placeholder="Search...">
+                        </form>
+                    </span>
+                    <span class="topPanel__icon"><img src="assets/images/alarm.svg" alt="icon of bell"><div class="topPanel__notification topPanel__notification--active"></div></span>
+                    <span class="topPanel__icon"><img  src="assets/images/calendar.svg" alt="icon of calendar"><div class="topPanel__notification"></div></span>
+                    <span class="topPanel__icon"><img id="topPanelApp" src="assets/images/apps.svg" alt="icon of 4 retcangle simbolyzing as app"><div class="topPanel__notification"></div></span>
+                    <img class="topPanel__profile" src="assets/images/michael_b_jordan.jpg" alt="profile image">
+                </div>
+        
+                <div class="main">
+                    <div id="premiumOffer">
+                        <span id="unlockPremium">Unlock premium stats</span>
+                        <span id="preiumStoargeInfo">Get up to 10TB of storage for a limitied time</span>
+                        <div class="premiumOffer__button">
+                                <div id="premiumOffer__wrapper">
+                                    <img src="assets/images/lightning.svg" alt="icon of lightning">
+                                    <span>Upgrade</span>
+                                </div>
+                        </div>
+                    </div>
+                    <ul id="listOfCards"> 
+                        <li>
+                            <div class="card">
+                                <span class="card__title">Revenue</span>
+                                <span class="card__value">$56,945</span>
+                                <div class="card__change card__change--positive"><span>+45%</span></div>
+                                <span class="card__from card__from--positive">From 4.6%</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <span class="card__title">Users</span>
+                                <span class="card__value">76.8%</span>
+                                <div class="card__change card__change--negative"><span>-1.7%</span></div>
+                                <span class="card__from card__from--negative">From 4.6%</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <span class="card__title">New Signups</span>
+                                <span class="card__value">116</span>
+                                <div class="card__change"><span>0.00</span></div>
+                                <span class="card__from"></span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="card">
+                                <span class="card__title">Retention</span>
+                                <span class="card__value">12.67%</span>
+                                <div class="card__change card__change--positive"><span>+0.6%</span></div>
+                                <span class="card__from card__from--positive">From 4.6%</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <table class="table">
+                        <caption><span>Installed apps</span> <img src="assets/images/more.svg" alt="icon of more button"></caption>
+                        <thead>
+                            <tr>
+                                <th>Source</th>
+                                <th>Amount</th>
+                                <th>Status</th>
+                                <th>User ID</th>
+                                <th>Joined</th>
+                                <th>Group</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                           <tr>
+                                <td class="table__source"><div><img src="assets/images/zepplin.svg" alt="icon of Zepplin"></div><span>Zepplin</span></td>
+                                <td>686.00</td>
+                                <td class="table__status table__status--active"><div><span>Active</span></div></td>
+                                <td>114423</td>
+                                <td>October</td>
+                                <td>Design</td>
+                           </tr>
+                           <tr>
+                                <td class="table__source"><div><img src="assets/images/figma.svg" alt="icon of Figma"></div><span>Figma</span></td>
+                                <td>864.00</td>
+                                <td class="table__status table__status--pending"><div><span>Pending</span></div></td>
+                                <td>76223</td>
+                                <td>June</td>
+                                <td>Finance</td>
+                           </tr>
+                           <tr>
+                                <td class="table__source"><div><img src="assets/images/meta.svg" alt="icon of Meta"></div><span>Meta</span></td>
+                                <td>176.00</td>
+                                <td class="table__status table__status--cancelled"><div><span>Cancelled</span></div></td>
+                                <td>89453</td>
+                                <td>March</td>
+                                <td>Coding</td>
+                           </tr>
+                           <tr>
+                                <td class="table__source"><div><img src="assets/images/angular.svg" alt="icon of Angular"></div><span>Angular</span></td>
+                                <td>49.00</td>
+                                <td class="table__status table__status--active"><div><span>Active</span></div></td>
+                                <td>11467</td>
+                                <td>February</td>
+                                <td>Marketing</td>
+                            </tr>
+                            <tr>
+                                <td class="table__source"><div><img src="assets/images/vue.svg" alt="icon of Vue"></div><span>Vue</span></td>
+                                <td>999.00</td>
+                                <td class="table__status table__status--active"><div><span>Active</span></div></td>
+                                <td>67385</td>
+                                <td>October</td>
+                                <td>Finance</td>
+                            </tr>
+                            <tr class="table__pager">
+                                <!-- external css propery column-span does not work the same way as colspan-->
+                                <td colspan="6">&#8592 <span>1/15</span> &#8594</td>
+                            </tr>
+                            <!-- attempted to make responsivness happen through happen through 2,4,6  colonspaned versions of same row but it did not work out for some reason in css -->
+                            <!-- <tr class="table__pager table__pager--medium">
+                                for responsiveness
+                                <td colspan="4">&#8592 <span>1/15</span> &#8594</td>
+                            </tr>
+                            <tr class="table__pager table__pager--small"> -->
+                                <!-- for responsiveness -->
+                                <!-- <td colspan="2">&#8592 <span>1/15</span> &#8594</td>
+                            </tr> -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
