@@ -1,6 +1,6 @@
 # Quantori_JS_Homework1
 
-The lecture 1 homework for Quantori JavaScript course.
+The homeworks for Quantori JavaScript course.
 
 ## Screenshot
 
