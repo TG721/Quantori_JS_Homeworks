@@ -17,7 +17,10 @@ class Component {
      
     render() {
         const div = this.element;
-        if(this.props.class) this.element.className = this.props.class
+        // console.log(this.state);
+        if(Object.keys(this.state).length==0){ //if state was not updated
+        if(this.props.class) this.element.className = this.props.class;
+        if(this.props.onClick) this.element.onclick = this.props.onClick;
         if(this.props.text){
             this.element.innerText = this.props.text;
         }
@@ -28,6 +31,10 @@ class Component {
         if (this.props.children) { // check if children is defined
             div.append(...this.props.children)
           }
+        } else { //if state was updated
+            // div.innerHTML = '';
+            if(this.state.children) div.append(...this.state.children)
+        }
         return div;
     }
 

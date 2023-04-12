@@ -23,6 +23,8 @@ class Button extends Component {
     constructor(props) {  //{text, color, bgColor, width, class} 
         super(props);
         this.element = document.createElement('div');
+        this.element.style.display = "inline-block"
+        
     }
     render(){
         if(this.props.color) this.element.style.color = this.props.color;
@@ -31,13 +33,19 @@ class Button extends Component {
         return super.render();
     }
 }
-
-// class Task extends HTMLElement {
-    class Task extends Component {
+class Task extends Component {
     constructor(props) {   //{children}
         super(props);
-        this.element = document.createElement('div');
+        this.element = document.createElement('li');
+        this.element.style.paddingTop = "10px";
     }
 }
 
-customElements.define("task-item", Task);
+class List extends Component {
+    constructor(props) {   //{children}
+        super(props);
+        this.element = document.createElement('ul');
+        this.element.style.listStyle = "none";
+    }
+    
+}
