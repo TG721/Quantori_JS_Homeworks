@@ -4,9 +4,12 @@ const search = new Search({
         style:"color:#838383; background-color:#F5F5F5;border-radius: 10px;border: 1px solid #D2D2D2; padding-left:10px"
     })
 const newTaskButton = new Button({text:"+ New Task", color:"#0053CF", bgColor:"#3C86F426", width:"15%", class:"button",   onClick: function() {
-    const text = getTask();
+    const inputResult =  getTask();
+    if(inputResult!=undefined){
+    const text = inputResult;
     const newTask = createTask({text: text});
     allTasks.setState({children: [...allTasks.props.children, newTask]});
+    }
   }}); 
 const allTasksHeader = new Header({text:"All tasks", importance:"h3"});
 const allTasks = new List({children: [
@@ -63,8 +66,8 @@ return new Task({children: [labelVar,imgVar]}).render();
 }
 
 function getTask() {
-    console.log("dfd")
-    var text = prompt("Please enter some text:");
-    return text;
+    var text = prompt("Please enter task:");
+    if (text !== null && text!="") {
+        return text;
   }
-  
+}
