@@ -17,5 +17,20 @@ document.getElementById('root').appendChild(new App({children: [
     header1.render(),
     search1.render(),
     newTaskButton.render(),
-    document.createElement('task-item')
+    createTask({text: "Task 1 title"})
 ]}).render());
+
+
+function createTask(props) { //{text}
+const labelVar = document.createElement('label');
+const inputVar = document.createElement('input');
+inputVar.type = "checkbox";
+const spanVar = document.createElement('span');
+spanVar.innerText = props.text;
+const imgVar = document.createElement('img');
+imgVar.src = "images/trash.svg";
+imgVar.style.marginLeft = "100px";
+labelVar.appendChild(inputVar);
+labelVar.appendChild(spanVar);
+return new Task({children: [labelVar,imgVar]}).render();
+}

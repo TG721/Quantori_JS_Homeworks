@@ -32,17 +32,11 @@ class Button extends Component {
     }
 }
 
-class Task extends HTMLElement {
-    constructor(props) {   //{text}
-        super();
-        const shadowRoot = this.attachShadow( {mode: 'closed'} );
-        shadowRoot.innerHTML = `<div class="input-container">
-        <label for="my-checkbox">
-          <input type="checkbox" id="my-checkbox">
-          <span class="input-label">the first task</span>
-        </label>
-        <img  style="margin-left: 100px" src="images/trash.svg" alt="delete button">
-      </div>`
+// class Task extends HTMLElement {
+    class Task extends Component {
+    constructor(props) {   //{children}
+        super(props);
+        this.element = document.createElement('div');
     }
 }
 
