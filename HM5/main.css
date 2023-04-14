@@ -19,7 +19,11 @@ input[type="text"] {
     margin-left: 5%;
 }
 
-.button:hover{
+.button:hover {
+    cursor: pointer;
+}
+
+.imgButton:hover {
     cursor: pointer;
 }
 

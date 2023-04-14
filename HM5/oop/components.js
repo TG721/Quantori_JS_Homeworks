@@ -24,6 +24,9 @@ class Input extends Component {
         this.element.type = "text";
         return super.render();
     }
+    update() {
+        if(this.state.isEmpty) this.element.value = "";
+    }
 }
 
 class Button extends Component {

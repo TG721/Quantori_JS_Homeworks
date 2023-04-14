@@ -1,11 +1,24 @@
 const headerTop = new Header({text:"To Do List", importance:"h1"});
 const search = new Input({
         placeholder:"Search Task", 
-        width: "60%"
+        width: "60%",     
     })
+search.element.addEventListener("input", function(event) {
+    const inputText = search.element.value;
+    for (let i = 0; i < allTasks.element.children.length; i++){
+      const currentTask = allTasks.element.children[i];
+      const taskTitle = currentTask.firstChild.children[1].innerText;
+      console.log("input text: ", inputText, " taskTitle: ", taskTitle)
+      if((taskTitle.toLowerCase()).includes((inputText).toLowerCase())) currentTask.style.display = "block"
+      else currentTask.style.display = "none"
+    }
+
+  });
 const newTaskButton = new Button({text:"+ New Task", color:"#0053CF", bgColor:"#3C86F426", width:"15%", class:"button",   onClick: function() {
-    modal.setState({display: "block"});
-    overlay.setState({display: "block"});
+    addTaskButton.setState({bgColor: "#D3D3D3"}); //make button color grey 
+    modalInput.setState({isEmpty: true});         //empty input field 
+    modal.setState({display: "block"});           //show modal
+    overlay.setState({display: "block"});         //show overlay
   }}); 
 const allTasksHeader = new Header({text:"All tasks", importance:"h3"});
 const allTasks = new List({children: [
@@ -90,6 +103,7 @@ imgVar.addEventListener("click", function(event) {
     parentElement.remove();
   });
 imgVar.src = "images/trash.svg";
+imgVar.className = "imgButton";
 imgVar.style.marginLeft = "100px";
 labelVar.style.display = "inline-block";
 imgVar.style.display = "inline-block";
