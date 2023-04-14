@@ -1,15 +1,11 @@
 const headerTop = new Header({text:"To Do List", importance:"h1"});
-const search = new Search({
+const search = new Input({
         placeholder:"Search Task", 
-        style:"color:#838383; background-color:#F5F5F5;border-radius: 10px;border: 1px solid #D2D2D2; padding-left:10px"
+        width: "60%"
     })
 const newTaskButton = new Button({text:"+ New Task", color:"#0053CF", bgColor:"#3C86F426", width:"15%", class:"button",   onClick: function() {
-    const inputResult =  getTask();
-    if(inputResult!=undefined){
-    const text = inputResult;
-    const newTask = createTask({text: text});
-    allTasks.setState({children: [...allTasks.props.children, newTask]});
-    }
+    modal.setState({display: "block"});
+    overlay.setState({display: "block"});
   }}); 
 const allTasksHeader = new Header({text:"All tasks", importance:"h3"});
 const allTasks = new List({children: [
@@ -18,6 +14,34 @@ const allTasks = new List({children: [
     createTask({text: "Task 3 title"})]})
 const completedTasksHeader = new Header({text:"Completed tasks", importance:"h3"});
 const completedTasks = new List({children: []});
+
+
+const modalHeader = new Header({text:"Add New Task", importance:"h3", style:"text-align: center"});
+const modalInput = new Input({placeholder:"Task Title", width: "90%", marginLeft: "20px"});
+const cancelButton = new Button({text:"Cancel", color:"#0053CF", bgColor:"white", width:"30%", class:"button", onClick: function() {
+    modal.setState({display: "none"});
+    overlay.element.style.display = "none"
+  }}); 
+const addTaskButton = new Button({text:"Add Task", color:"white", bgColor:"#D3D3D3", width:"30%", class:"button", onClick: function() {
+    modal.setState({display: "block"});
+    overlay.setState({display: "block"});
+    const inputResult = modalInput.element.value;
+    if(inputResult != null && inputResult.trim(' ')!=""){
+    const text = inputResult;
+    const newTask = createTask({text: text});
+    allTasks.setState({children: [...allTasks.props.children, newTask]});
+    modal.setState({display: "none"});
+    overlay.setState({display: "none"});
+    }
+  }}); 
+const buttonsWrapper = new Component({children: [cancelButton.render(), addTaskButton.render()], style:"text-align: center; margin: 150px 0px 0px -40px"});
+modalInput.element.addEventListener("input", function(event) {
+    if(modalInput.element.value.trim(' ') != "") addTaskButton.setState({bgColor: "#3C86F4"})
+    else addTaskButton.setState({bgColor: "#D3D3D3"});
+});
+
+const overlay = new Overlay();
+const modal = new Modal({children: [modalHeader.render(), modalInput.render(), buttonsWrapper.render()]});
 class App extends Component {
     constructor(props) {
         super(props);
@@ -33,7 +57,9 @@ document.getElementById('root').appendChild(new App({children: [
     allTasksHeader.render(),
     allTasks.render(),
     completedTasksHeader.render(),
-    completedTasks.render()
+    completedTasks.render(),
+    overlay.render(),
+    modal.render()
 
     
 ]}).render());
@@ -46,28 +72,30 @@ inputVar.type = "checkbox";
 inputVar.addEventListener("change", function(event) {
     if (this.checked) {
         console.log("Checkbox is checked");
-        completedTasks.setState({children: [imgVar.parentElement]});
-        // console.log(imgVar.parentElement);
-        console.log("Checkbox is not checked");
+        const parentElement = imgVar.parentElement; //li element
+        // console.log(parentElement.firstChild.firstChild) // li > label > input
+        parentElement.firstChild.firstChild.disabled = true;
+        const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
+        completedTasks.setState({children: [parentElement]});
+        allTasks.removeItemAt(index);
       }
   });
 const spanVar = document.createElement('span');
 spanVar.innerText = props.text;
 const imgVar = document.createElement('img');
 imgVar.addEventListener("click", function(event) {
-    imgVar.parentElement.remove();
+    const parentElement = imgVar.parentElement;
+    const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
+    allTasks.removeItemAt(index);
+    parentElement.remove();
   });
 imgVar.src = "images/trash.svg";
 imgVar.style.marginLeft = "100px";
+labelVar.style.display = "inline-block";
+imgVar.style.display = "inline-block";
+labelVar.style.width = "400px";
 labelVar.appendChild(inputVar);
 labelVar.appendChild(spanVar);
 
 return new Task({children: [labelVar,imgVar]}).render();
-}
-
-function getTask() {
-    var text = prompt("Please enter task:");
-    if (text !== null && text!="") {
-        return text;
-  }
 }
