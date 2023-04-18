@@ -5,6 +5,12 @@ body {
     background-color: #F2F4F7;
 }
 
+iframe {
+    border: none;
+    width: 1010px;
+    margin: -6px;
+}
+
 :root {
     --default: #5F6980
 }
@@ -17,7 +23,7 @@ body {
     background-size: 20px 20px;
     /* so typed text won't appear behind the icon */
     padding: 8px 8px 8px 36px;
-    width: 800px;
+    width: 760px;
     border: none;
     border-radius: 4px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1),
@@ -318,7 +324,7 @@ body {
 }
 
 .table {
-    width: 980px;
+    width: 950px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     border-collapse: collapse;
     border-spacing: 0;
@@ -411,17 +417,24 @@ body {
 }
 
 
-.table__pager > td {
-    text-align: center;
+ .table__pager  {
+    width: 954px;
+    height: 50px;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     color: black;
     font-weight: bold;
 }
+ 
 
-
-.table__pager> td > span {
+.table__pager>  span {
     padding-right: 10px;
     padding-left: 10px;
-}
+} 
 
 .table__status > div {
     position: relative;
@@ -473,11 +486,20 @@ body {
     body {
       font-size: 18px;
     }
+    iframe {
+        width: 920px;
+    }
+    .card {
+        width: 202px;
+    }
     .table > caption {
-        width: 900px;
+        width: 892px;
     }
     .search__input {
         width: 630px;
+    }
+    .premiumOffer {
+        width: 910px;
     }
     .premiumOffer__button {
         width: 120px;
@@ -486,11 +508,11 @@ body {
         top: 50%;
         transform: translateY(-50%);
     }
-    /* .table__pager--large {
-        display: none;
-    } */
     .navigation {
         display: none;
+    }
+    .table__pager  {
+        width: 914px;
     }
 
 }
@@ -501,11 +523,23 @@ body {
     body {
       font-size: 18px;
     }
+    iframe {
+        width: 710px;
+    }
+    .card {
+        width: 152px;
+    }
+    .card__title {
+        font-size: 16px
+    }
+    .card__value {
+        font-size: 24px;
+    }
     .table > caption {
-        width: 700px;
+        width: 684px;
     }
     .search__input {
-        width: 430px;
+        width: 450px;
     }
     .premiumOffer__button {
         width: 120px;
@@ -514,12 +548,14 @@ body {
         top: 50%;
         transform: translateY(-50%);
     }
-    /* .table__pager--large {
-        display: none;
-    } */
+
     .navigation {
         display: none;
     }
+    .table__pager  {
+        width: 706px;
+    }
+
 
 }
 
@@ -528,25 +564,33 @@ body {
     body {
       font-size: 16px;
     }
-    /* .table__pager--medium {
-        display: block;
-
+    iframe {
+        width: 670px;
     }
-    .table__pager--small {
-        display: none;
+    #listOfCards {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* Creates two columns with equal width */
+        grid-gap: 20px; /* Adds a gap between grid items */
+        padding-left: 0px;
     }
-    .table__pager--large {
-        display: none;
-    } */
+    .card {
+        width: 300px;
+    }
+    .card__title {
+        font-size: 14px;
+    }
+    .card__value {
+        font-size: 22px;
+    }
     .navigation {
         display: none;
     }
 
     #premiumOffer {
-        width: 550px;
+        width: 650px;
     }
     .table > caption {
-        width: 550px;
+        width: 650px;
     }
     .premiumOffer__button {
         top: 90px;
@@ -556,8 +600,12 @@ body {
         font-size: 14px;
     }
     .search__input {
-        width: 350px;
+        width:460px;
     }
+    .table__pager  {
+        width: 672px;
+    }
+
 }
 
 /* Media query for screens smaller than 600px */
@@ -565,6 +613,9 @@ body {
     body {
       font-size: 16px;
     }
+    iframe {
+        width: 520px;
+    }
 
     #listOfCards {
         display: flex;
@@ -578,40 +629,35 @@ body {
     .card {
         width: 500px;
     }
-    /* .table__pager--medium {
-        display: block;
-
-    }
-    .table__pager--small {
-        display: none;
-    }
-    .table__pager--large {
-        display: none;
-    }
-    .navigation {
-        display: none;
-    } */
 
     #premiumOffer {
         width: 500px;
     }
     .table > caption {
-        width: 500px;
+        width: 492px;
     }
     .premiumOffer__button {
-        top: 100px;
+        top: 106px;
         right: 30px;
         width: 120px;
         height: 30px;
         font-size: 14px;
     }
     .search__input {
-        width: 250px;
+        width: 270px;
     }
+    .table__pager  {
+        width: 518px;
+    }
+
 }
- @media (max-width: 400px) {
+
+@media (max-width: 500px) {
     body {
         font-size: 14px;
+    }
+    iframe {
+        width: 480px;
     }
     #listOfCards {
         display: flex;
@@ -623,26 +669,85 @@ body {
         padding-left: 0px;
     }
     .card {
-        width: 360px;
+        width: 480px;
     }
-    /* .table__pager--medium {
-        display: block;
-        padding: 0px;
-        margin: 0px;
+    .card__title {
+        font-size: 24px;
     }
-    .table__pager--small {
-        display: block;
-        padding: 0px;
-        margin: 0px;
+    .card__value {
+        margin-top: 7px;
+        font-size: 32px;
     }
-    .table__pager--large {
-        display: none;
-        padding: 0px;
-        margin: 0px;
-    } */
+    .card__change {
+        height: 32px;
+        width: 60px;
+        font-size: 14px;
+    }
+    .card__from {
+        margin-left: 10px;
+        font-size: 18px;
+    }
+    #premiumOffer {
+        width: 480px;
+    }
+    .table > caption {
+        width: 450px;
+    }
     .navigation {
         display: none;
     }
+    .table__pager  {
+        width: 472px;
+    }
+
+  }
+
+ @media (max-width: 400px) {
+    body {
+        font-size: 14px;
+    }
+    iframe {
+        width: 370px;
+    }
+    #premiumOffer {
+        width: 370px;
+        font-size: 20px;
+    }
+    #preiumStoargeInfo {
+        font-size: 16px;
+    }
+    .table > caption {
+        width: 344px;
+    }
+    #listOfCards {
+        display: flex;
+        flex-wrap: wrap;
+        flex-direction: column;
+        list-style-type: none;
+        align-items: flex-start;
+        gap: 30px;
+        padding-left: 0px;
+    }
+    .card {
+        width: 370px;
+    }
+    .card__change {
+        font-size: 14px;
+    }
+    .card__from {
+        font-size: 17px;
+    }
+    .navigation {
+        display: none;
+    }
+
+    .search__input {
+        width: 150px;
+    }
+    .table__pager  {
+        width: 366px;
+    }
+
   }
 
   
@@ -650,6 +755,9 @@ body {
     body {
         font-size: 13px;
     }
+    iframe {
+        width: 190px;
+    }
     #listOfCards {
         display: flex;
         flex-wrap: wrap;
@@ -660,10 +768,10 @@ body {
         padding-left: 0px;
     }
     .card {
-        width: 190px;
+        width: 180px;
     }
     #premiumOffer {
-        width: 190px;
+        width: 180px;
     }
     #unlockPremium  {
         font-size: 16px;
@@ -672,7 +780,7 @@ body {
         font-size: 12px;
     }
     .table > caption {
-        width: 190px;
+        width: 180px;
     }
     .premiumOffer__button {
         top: 105px;
@@ -682,16 +790,23 @@ body {
         font-size: 14px;
     }
     .search__input {
-        width: 190px;
+        width: 180px;
     }
     .navigation {
         display: none;
     }
+    .table__pager  {
+        width: 212px;
+    }
+
   }
 
   @media (max-width: 360px) {
     body {
         font-size: 12px;
+    }
+    iframe {
+        width: 350px;
     }
     #listOfCards {
         display: flex;
@@ -703,10 +818,10 @@ body {
         padding-left: 0px;
     }
     .card {
-        width: 350px;
+        width: 340px;
     }
     #premiumOffer {
-        width: 350px;
+        width: 340px;
     }
     #unlockPremium  {
         font-size: 16px;
@@ -715,7 +830,7 @@ body {
         font-size: 12px;
     }
     .table > caption {
-        width: 350px;
+        width: 322px;
     }
     .premiumOffer__button {
         top: 105px;
@@ -725,9 +840,13 @@ body {
         font-size: 14px;
     }
     .search__input {
-        width: 190px;
+        width: 120px;
     }
     .navigation {
         display: none;
     }
+    .table__pager  {
+        width: 344px;
+    }
+
   }
