@@ -1,4 +1,4 @@
-# Quantori_JS_Homework1
+# Quantori_JS_Homeworks
 
 The homeworks for Quantori JavaScript course.
 
