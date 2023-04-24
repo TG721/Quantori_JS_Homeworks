@@ -21,13 +21,43 @@ const newTaskButton = new Button({text:"+ New Task", color:"#0053CF", bgColor:"#
     overlay.setState({display: "block"});         //show overlay
   }}); 
 const allTasksHeader = new Header({text:"All tasks", importance:"h3"});
-const allTasks = new List({children: [
-    createTask({text: "Task 1 title"}),
-    createTask({text: "Task 2 title"}), 
-    createTask({text: "Task 3 title"})]})
+const allTasks = new List({children: []})
 const completedTasksHeader = new Header({text:"Completed tasks", importance:"h3"});
 const completedTasks = new List({children: []});
 
+//make a request
+const request = new XMLHttpRequest();
+let responseArray = [];
+let listSize = 0;
+//getting Tasks
+request.open("GET","http://localhost:3000/tasks");
+request.send()
+request.onload = ()=>{
+    // console.log(request);
+    if(request.status===200){
+        responseArray = JSON.parse(request.response)
+        listSize = responseArray.length;
+        let allTasksArray = [];
+        let completedTasksArray = [];
+        for(let i =0; i<responseArray.length; i++){
+          if(responseArray[i].isCompleted==false)  {
+            const task = createTask({text: responseArray[i].title, id: responseArray[i].id, isCompleted: false });
+            allTasksArray.push(task)
+          }
+          else {
+            const task = createTask({text: responseArray[i].title, id: responseArray[i].id, isCompleted: true });
+            completedTasksArray.push(task)
+          }
+        }
+        allTasks.setState({children: allTasksArray});
+        completedTasks.setState({children: completedTasksArray});
+    }
+    else {
+        console.log(`error ${request.status}`);
+
+    }
+
+}
 
 const modalHeader = new Header({text:"Add New Task", importance:"h3", style:"text-align: center"});
 const modalInput = new Input({placeholder:"Task Title", width: "90%", marginLeft: "20px"});
@@ -41,10 +71,26 @@ const addTaskButton = new Button({text:"Add Task", color:"white", bgColor:"#D3D3
     const inputResult = modalInput.element.value;
     if(inputResult != null && inputResult.trim(' ')!=""){
     const text = inputResult;
-    const newTask = createTask({text: text});
+    const newTask = createTask({text: text, id: listSize+1});
     allTasks.setState({children: [...allTasks.props.children, newTask]});
-    modal.setState({display: "none"});
-    overlay.setState({display: "none"});
+    const taskData = {id : null, title : text, isCompleted : false}
+    // console.log(taskData);
+    //add on local server
+      fetch('http://localhost:3000/tasks',{
+        method : "POST",
+        headers : {
+          'Content-Type' : 'application/json',
+        },
+        body : JSON.stringify(taskData),
+      })
+      .then(response => response.json())
+      .then(() =>
+      {console.log("success");
+      modal.setState({display: "none"})
+      overlay.setState({display: "none"});
+      listSize++;
+    })
+    .catch(error => console.log(error))
     }
   }}); 
 const buttonsWrapper = new Component({children: [cancelButton.render(), addTaskButton.render()], style:"text-align: center; margin: 150px 0px 0px -40px"});
@@ -82,15 +128,35 @@ function createTask(props) { //{text}
 const labelVar = document.createElement('label');
 const inputVar = document.createElement('input');
 inputVar.type = "checkbox";
+if(props.isCompleted) {
+  inputVar.checked = true;
+  inputVar.disabled = true;
+}
+else {
+  inputVar.checked = false;
+}
 inputVar.addEventListener("change", function(event) {
     if (this.checked) {
+        //modify element in json server
+        const taskData = {id : props.id, title : props.text, isCompleted : true}
+        fetch('http://localhost:3000/tasks/' + props.id, {
+        method: 'PATCH', 
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(taskData),
+        })
+      .then(response => response.json())
+      .then(() => {
+        console.log("data was successfuly modified");
         console.log("Checkbox is checked");
-        const parentElement = imgVar.parentElement; //li element
-        // console.log(parentElement.firstChild.firstChild) // li > label > input
+        const parentElement = imgVar.parentElement;
         parentElement.firstChild.firstChild.disabled = true;
         const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
         completedTasks.setState({children: [parentElement]});
         allTasks.removeItemAt(index);
+      })
+      .catch(error => console.error(error))
       }
   });
 const spanVar = document.createElement('span');
@@ -99,8 +165,15 @@ const imgVar = document.createElement('img');
 imgVar.addEventListener("click", function(event) {
     const parentElement = imgVar.parentElement;
     const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
-    allTasks.removeItemAt(index);
-    parentElement.remove();
+    fetch('http://localhost:3000/tasks/' + parentElement.id, {
+    method: 'DELETE',
+    })
+    .then(response => response.json())
+    .then(() => {
+      allTasks.removeItemAt(index);
+      parentElement.remove();
+    })
+    .catch(error => console.error(error))
   });
 imgVar.src = "images/trash.svg";
 imgVar.className = "imgButton";
@@ -111,5 +184,5 @@ labelVar.style.width = "400px";
 labelVar.appendChild(inputVar);
 labelVar.appendChild(spanVar);
 
-return new Task({children: [labelVar,imgVar]}).render();
+return new Task({children: [labelVar,imgVar], id: props.id}).render();
 }

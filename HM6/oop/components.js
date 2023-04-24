@@ -51,6 +51,7 @@ class Task extends Component {
         super(props);
         this.element = document.createElement('li');
         this.element.style.paddingTop = "10px";
+        this.element.id = props.id;
     }
 }
 
