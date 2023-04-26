@@ -19,7 +19,7 @@ The homeworks for Quantori JavaScript course.
       <td><img src="https://user-images.githubusercontent.com/85778941/232160515-f8c2f3f4-7992-4ffd-a430-7af8660bb597.png" width="327"></td>
    </tr>
    <tr>
-      <td colspan="3">Homework 5-6</td>
+      <td colspan="3">Homework 5-10</td>
    </tr>
    <tr>
       <td colspan="3"><img src="https://user-images.githubusercontent.com/85778941/234003119-afb2d0bc-0e36-4478-aaa6-36531e2419b9.png"></td>
