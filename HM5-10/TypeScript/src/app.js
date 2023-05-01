@@ -1,5 +1,12 @@
 import {Component} from "./base_classes.js";
-import {Header, Input, Button, Task, List, Modal, Overlay} from "./components.js";
+import {Header} from "./components/Header/Header.js";
+import {Button} from "./components/Button/Button.js";
+import {List} from "./components/List/List.js";
+import {Input} from "./components/Input/Input.js";
+import {Task} from "./components/Task/Task.js";
+import {Modal} from "./components/Modal/Modal.js";
+import {Overlay} from "./components/Overlay/Overlay.js";
+
 import style from './main.css';
 import trash from './images/trash.svg';
 
