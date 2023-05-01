@@ -6,14 +6,19 @@ import {Input} from "./components/Input/Input.js";
 import {Task} from "./components/Task/Task.js";
 import {Modal} from "./components/Modal/Modal.js";
 import {Overlay} from "./components/Overlay/Overlay.js";
+import {Weather} from "./components/Weather/Weather.js";
 
 import style from './main.css';
 import trash from './images/trash.svg';
 
-const headerTop = new Header({text:"To Do List", importance:"h1"});
+const headerTop = new Header({text:"To Do List", importance:"h1", class:"header"});
+const weather = new Weather({title: "placeholder °C", city:"placeholder city", class:"weather"});
+const topWrapper = new Component({children: [headerTop.render(), weather.render()], class:"inLineWrapper"});
+updateWeather();
+
 const search = new Input({
         placeholder:"Search Task", 
-        width: "60%",     
+        width: "60%",  
     })
 search.element.addEventListener("input", function(event) {
     const inputText = search.element.value;
@@ -94,7 +99,7 @@ class App extends Component {
 var a = new createTask({text: "Task 1 title"});
 // console.log(header1.render()) //was only for debugging purposes
 document.getElementById('root').appendChild(new App({children: [
-    headerTop.render(),
+    topWrapper.render(),
     search.render(),
     newTaskButton.render(),
     allTasksHeader.render(),
@@ -108,71 +113,72 @@ document.getElementById('root').appendChild(new App({children: [
 ]}).render());
 
 
-function createTask(props) { //{text}
-const labelVar = document.createElement('label');
-const inputVar = document.createElement('input');
-inputVar.type = "checkbox";
-if(props.isCompleted) {
-  inputVar.checked = true;
-  inputVar.disabled = true;
-}
-else {
-  inputVar.checked = false;
-}
-inputVar.addEventListener("change", function(event) {
-    if (this.checked) {
-        //modify element in json server
-        const taskData = {id : props.id, title : props.text, isCompleted : true}
-        fetch('http://localhost:3000/tasks/' + props.id, {
-        method: 'PATCH', 
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify(taskData),
-        })
-      .then(response => response.json())
-      .then(() => {
-        console.log("data was successfuly modified");
-        console.log("Checkbox is checked");
-        const parentElement = imgVar.parentElement;
-        parentElement.firstChild.firstChild.disabled = true;
-        const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
-        completedTasks.setState({children: [parentElement]});
-        allTasks.removeItemAt(index);
-      })
-      .catch(error => console.error(error))
-      }
-  });
-const spanVar = document.createElement('span');
-spanVar.innerText = props.text;
-const imgVar = document.createElement('img');
-imgVar.addEventListener("click", function(event) {
-    const parentElement = imgVar.parentElement;
-    const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
-    fetch('http://localhost:3000/tasks/' + parentElement.id, {
-    method: 'DELETE',
-    })
-    .then(response => response.json())
-    .then(() => {
-      allTasks.removeItemAt(index);
-      parentElement.remove();
-    })
-    .catch(error => console.error(error))
-  });
-imgVar.src = trash;
-imgVar.className = "imgButton";
-imgVar.style.marginLeft = "100px";
-labelVar.style.display = "inline-block";
-imgVar.style.display = "inline-block";
-labelVar.style.width = "400px";
-labelVar.appendChild(inputVar);
-labelVar.appendChild(spanVar);
-
-return new Task({children: [labelVar,imgVar], id: props.id}).render();
-}
-
 
 //seperate functions
+
+function createTask(props) { //{text}
+  const labelVar = document.createElement('label');
+  const inputVar = document.createElement('input');
+  inputVar.type = "checkbox";
+  if(props.isCompleted) {
+    inputVar.checked = true;
+    inputVar.disabled = true;
+  }
+  else {
+    inputVar.checked = false;
+  }
+  inputVar.addEventListener("change", function(event) {
+      if (this.checked) {
+          //modify element in json server
+          const taskData = {id : props.id, title : props.text, isCompleted : true}
+          fetch('http://localhost:3000/tasks/' + props.id, {
+          method: 'PATCH', 
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify(taskData),
+          })
+        .then(response => response.json())
+        .then(() => {
+          console.log("data was successfuly modified");
+          console.log("Checkbox is checked");
+          const parentElement = imgVar.parentElement;
+          parentElement.firstChild.firstChild.disabled = true;
+          const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
+          completedTasks.setState({children: [parentElement]});
+          allTasks.removeItemAt(index);
+        })
+        .catch(error => console.error(error))
+        }
+    });
+  const spanVar = document.createElement('span');
+  spanVar.innerText = props.text;
+  const imgVar = document.createElement('img');
+  imgVar.addEventListener("click", function(event) {
+      const parentElement = imgVar.parentElement;
+      const index = Array.from(parentElement.parentElement.children).indexOf(imgVar);
+      fetch('http://localhost:3000/tasks/' + parentElement.id, {
+      method: 'DELETE',
+      })
+      .then(response => response.json())
+      .then(() => {
+        allTasks.removeItemAt(index);
+        parentElement.remove();
+      })
+      .catch(error => console.error(error))
+    });
+  imgVar.src = trash;
+  imgVar.className = "imgButton";
+  imgVar.style.marginLeft = "100px";
+  labelVar.style.display = "inline-block";
+  imgVar.style.display = "inline-block";
+  labelVar.style.width = "400px";
+  labelVar.appendChild(inputVar);
+  labelVar.appendChild(spanVar);
+  
+  return new Task({children: [labelVar,imgVar], id: props.id}).render();
+  }
+  
 
 function loadTasks(){
   //make a request
@@ -206,4 +212,21 @@ request.onload = ()=>{
     }
 
 }
+}
+
+function updateWeather() {
+  const API_KEY = '6359e9dba2064bbeb8a213808230105';
+  const LOCATION = 'Tbilisi';
+  
+  fetch(`https://api.weatherapi.com/v1/current.json?key=${API_KEY}&q=${LOCATION}`)
+    .then(response => response.json())
+    .then(data => {
+      console.log(data);
+      //accessing location and current data:
+      const location = data.location;
+      const current = data.current;
+      weather.setState(current.temp_c + "°C", location.name)
+    })
+    .catch(error => console.error(error));
+  
 }
