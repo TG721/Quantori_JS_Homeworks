@@ -8,7 +8,7 @@ export default function ListOfTasks(){
     useEffect(() => {
         async function fetchTasks() {
             try {
-                const response = await fetch(`http://localhost:30031/tasks`);
+                const response = await fetch(`http://localhost:3001/tasks`);
                 if (!response.ok) {
                   throw new Error('Failed to fetch tasks');
                 }
