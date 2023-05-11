@@ -39,6 +39,7 @@ export default function ListOfTasks(){
               return task;
             }
           });
+          //triggering rerender
           setTasks(updatedTasks);
       }
 

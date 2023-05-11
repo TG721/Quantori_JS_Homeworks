@@ -4,7 +4,9 @@ import Input from './components/Input/Input';
 import Weather from './components/Weather/Weather';
 import Task from './components/Task/Task';
 import ListOfTasks from './components/ListOfTasks/ListOfTasks'
+import Modal from './components/Modal/Modal';
 import './App.css';
+import Overlay from './components/Overlay/Overlay';
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
       <Button title="+ New Task" className="newTaskButton button"/>
       </div >
       <ListOfTasks />
+      <Overlay />
+      <Modal />
     </div>
   );
 }
