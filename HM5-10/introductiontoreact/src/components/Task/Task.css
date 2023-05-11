@@ -1,0 +1,20 @@
+.task {
+    padding-top: 10px;
+}
+
+.taskLabel, .trashButton {
+    display: inline-block;
+}
+
+.taskLabel {
+    width: 400px;
+    text-align: start;
+}
+
+.trashButton:hover {
+    cursor: pointer;
+}
+
+.trashButton:hover > path {
+    fill: #3C86F499;
+}

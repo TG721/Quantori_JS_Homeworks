@@ -1,0 +1,22 @@
+.App {
+  margin-left: 20px;
+}
+
+.inLineWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+  height: 100%;
+}
+
+.inLineWrapper > :last-child {
+  margin: auto;
+
+}
+
+ul {
+  list-style-type: none;
+  
+}
+
