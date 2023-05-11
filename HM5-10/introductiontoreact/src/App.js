@@ -18,7 +18,6 @@ function App() {
       <Input placeholder="Search Task" className="search input"/>
       <Button title="+ New Task" className="newTaskButton button"/>
       </div >
-      <Header className="listHeader" title="All tasks" importance="h3"/>
       <ListOfTasks />
     </div>
   );

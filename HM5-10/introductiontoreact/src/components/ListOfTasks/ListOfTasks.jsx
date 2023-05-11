@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import Header from '../Header/Header';
 import Task from "../Task/Task";
 
 export default function ListOfTasks(){
@@ -27,9 +28,20 @@ export default function ListOfTasks(){
       }
       else {
         return (
+            <>
+            <Header className="listHeader" title="All tasks" importance="h3" />
             <ul>
-                {tasks.map(item => <Task key={item.id} id={item.id} title={item.title}/>)}
+            {tasks.filter(task => !task.isCompleted).map(task => (
+                <Task key={task.id} id={task.id} title={task.title} />
+            ))}
             </ul>
+            <Header className="listHeader" title="Completed tasks" importance="h3"/>
+            <ul>
+            {tasks.filter(task => task.isCompleted).map(task => (
+                <Task key={task.id} id={task.id} title={task.title} />
+            ))}
+            </ul>
+            </>
         )
       }
 
