@@ -3,7 +3,7 @@
     {
       "id": 1,
       "title": "Task 1",
-      "isCompleted": false
+      "isCompleted": true
     },
     {
       "id": 2,

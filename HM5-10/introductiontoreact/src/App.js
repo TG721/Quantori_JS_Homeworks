@@ -1,4 +1,3 @@
-import logo from './logo.svg';
 import Button from './components/Button/Button';
 import Header from './components/Header/Header';
 import Input from './components/Input/Input';
