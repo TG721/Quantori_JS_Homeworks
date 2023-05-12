@@ -9,6 +9,7 @@ import './App.css';
 
 function App() {
   const [showModal, setShowModal] = useState(false);
+  const [searchText, setSearchText] = useState('');
 
   return (
     <div className="App">
@@ -17,10 +18,10 @@ function App() {
       <Weather location="Tbilisi"/>
       </div>
       <div className='inLineWrapper'>
-      <Input placeholder="Search Task" className="search input"/>
+      <Input placeholder="Search Task" className="search input"  value={searchText} onChange={(event) => setSearchText(event.target.value)}/> 
       <Button title="+ New Task" className="newTaskButton button" onClick={() => setShowModal(true)}/>
       </div >
-      <ListOfTasks />
+      <ListOfTasks searchText={searchText} />
       <Modal showModal={showModal} setShowModal={setShowModal} className={`modal ${showModal ? 'shown' : 'hidden'}`} />
     </div>
   );
