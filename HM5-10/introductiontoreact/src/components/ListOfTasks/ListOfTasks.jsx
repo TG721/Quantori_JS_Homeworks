@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Task from "../Task/Task";
 
+
 export default function ListOfTasks(){
     const [tasks, setTasks] = useState([]);
     const [error, setError] = useState(null);
@@ -25,23 +26,10 @@ export default function ListOfTasks(){
             .then(() => {
               console.log("data was successfuly modified");
               console.log("Checkbox is checked");
-              //modify task locally to trigger reload()
-              modifyTaskListLocally(passedId, isCompleted);
+
             })
             .catch(error => console.error(error))
             }
-            
-      function modifyTaskListLocally(id, isCompleted){
-        const updatedTasks = tasks.map(task => {
-            if (task.id === id) {
-              return { ...task, isCompleted };
-            } else {
-              return task;
-            }
-          });
-          //triggering rerender
-          setTasks(updatedTasks);
-      }
 
     useEffect(() => {
         async function fetchTasks() {

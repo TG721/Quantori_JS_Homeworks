@@ -18,9 +18,16 @@
 }
 
 .addTask {
-    background-color: #D3D3D3;
     width: 30%;
     color: white;
+}
+
+.notActive {
+    background-color: #D3D3D3;
+}
+
+.active {
+    background-color: #3C86F4;
 }
 
 .cancel {
@@ -32,4 +39,12 @@
 .buttonsWrapper {
     text-align: center;
     margin: 150px 0px 0px -40px;
+}
+
+.shown {
+    display: block;
+}
+
+.hidden {
+    display: none;
 }

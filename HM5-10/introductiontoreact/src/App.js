@@ -1,14 +1,15 @@
+import React, { useState } from 'react';
 import Button from './components/Button/Button';
 import Header from './components/Header/Header';
 import Input from './components/Input/Input';
 import Weather from './components/Weather/Weather';
-import Task from './components/Task/Task';
 import ListOfTasks from './components/ListOfTasks/ListOfTasks'
 import Modal from './components/Modal/Modal';
 import './App.css';
-import Overlay from './components/Overlay/Overlay';
 
 function App() {
+  const [showModal, setShowModal] = useState(false);
+
   return (
     <div className="App">
       <div className="inLineWrapper">
@@ -17,11 +18,10 @@ function App() {
       </div>
       <div className='inLineWrapper'>
       <Input placeholder="Search Task" className="search input"/>
-      <Button title="+ New Task" className="newTaskButton button"/>
+      <Button title="+ New Task" className="newTaskButton button" onClick={() => setShowModal(true)}/>
       </div >
       <ListOfTasks />
-      <Overlay />
-      <Modal />
+      <Modal showModal={showModal} setShowModal={setShowModal} className={`modal ${showModal ? 'shown' : 'hidden'}`} />
     </div>
   );
 }
