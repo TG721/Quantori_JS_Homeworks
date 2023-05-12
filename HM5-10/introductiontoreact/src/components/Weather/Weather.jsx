@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SunnyWithCloud from './images/SunnyWithCloud.svg';
 import './Weather.css';
 
-export default function Weather(props){
+  function Weather(props){
     const [data, setData] = useState(null);
     const [error, setError] = useState(null);
     const API_KEY = '6359e9dba2064bbeb8a213808230105';
@@ -56,3 +56,5 @@ export default function Weather(props){
         )
     }
 }
+
+export default React.memo(Weather);
