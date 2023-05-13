@@ -66,7 +66,7 @@ export default function ListOfTasks(props){
             </ul>
             <Header className="listHeader" title="Completed tasks" importance="h3"/>
             <ul>
-            {tasks.filter(task => task.isCompleted).map(task => (
+            {filteredTasks.filter(task => task.isCompleted).map(task => (
                 <Task key={task.id} id={task.id} title={task.title} isCompleted={task.isCompleted} onTaskCompletion={handleTaskCompletion} />
             ))}
             </ul>
