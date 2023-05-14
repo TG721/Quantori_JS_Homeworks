@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Header from '../Header/Header';
 import Task from "../Task/Task";
+import "./ListOfTasks.css"
 
 
 export default function ListOfTasks(props){
@@ -19,6 +20,7 @@ export default function ListOfTasks(props){
       function modifyTaskList(passedId, isCompleted, taskTitle) {
         //modify element in json server
         const taskData = {id : passedId, title: taskTitle, isCompleted : true}
+        console.log(taskData);
         fetch('http://localhost:3001/tasks/' + passedId, {
             method: 'PATCH', 
             headers: {
@@ -59,15 +61,15 @@ export default function ListOfTasks(props){
         return (
             <>
             <Header className="listHeader" title="All tasks" importance="h3" />
-            <ul>
+            <ul className="listedTasks">
             {filteredTasks.filter(task => !task.isCompleted).map(task => (
-                <Task key={task.id} id={task.id} title={task.title} isCompleted={task.isCompleted} onTaskCompletion={handleTaskCompletion} />
+                <Task key={task.id} id={task.id} title={task.title} isCompleted={task.isCompleted} tag={task.tag} onTaskCompletion={handleTaskCompletion} />
             ))}
             </ul>
             <Header className="listHeader" title="Completed tasks" importance="h3"/>
-            <ul>
+            <ul className="listedTasks">
             {filteredTasks.filter(task => task.isCompleted).map(task => (
-                <Task key={task.id} id={task.id} title={task.title} isCompleted={task.isCompleted} onTaskCompletion={handleTaskCompletion} />
+                <Task key={task.id} id={task.id} title={task.title} isCompleted={task.isCompleted} tag={task.tag} onTaskCompletion={handleTaskCompletion} />
             ))}
             </ul>
             </>

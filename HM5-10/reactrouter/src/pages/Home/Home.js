@@ -1,10 +1,10 @@
 import React, { useState } from 'react';
-import Button from '../components/Button/Button';
-import Header from '../components/Header/Header';
-import Input from '../components/Input/Input';
-import Weather from '../components/Weather/Weather';
-import ListOfTasks from '../components/ListOfTasks/ListOfTasks'
-import Modal from '../components/Modal/Modal';
+import Button from '../../components/Button/Button';
+import Header from '../../components/Header/Header';
+import Input from '../../components/Input/Input';
+import Weather from '../../components/Weather/Weather';
+import ListOfTasks from '../../components/ListOfTasks/ListOfTasks'
+import Modal from '../../components/Modal/Modal';
 import './Home.css'
 
 

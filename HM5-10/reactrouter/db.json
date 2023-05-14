@@ -1,99 +1,22 @@
 {
   "tasks": [
     {
-      "id": 1,
       "title": "Task 1",
-      "isCompleted": true
-    },
-    {
-      "id": 2,
-      "title": "Task 3",
-      "isCompleted": true
-    },
-    {
-      "id": 3,
-      "title": "Task 4",
-      "isCompleted": true
-    },
-    {
-      "title": "Task 12",
       "isCompleted": true,
-      "id": 4
+      "tag": "health",
+      "id": 1
     },
     {
-      "title": "Task 47",
+      "title": "Task 2",
       "isCompleted": false,
-      "id": 5
+      "tag": "health",
+      "id": 2
     },
     {
-      "title": "Task 12",
+      "title": "Task 3",
       "isCompleted": false,
-      "id": 6
-    },
-    {
-      "id": 7,
-      "title": "Task 18",
-      "isCompleted": true
-    },
-    {
-      "title": "Task Important",
-      "isCompleted": false,
-      "id": 8
-    },
-    {
-      "title": "efsdf",
-      "isCompleted": false,
-      "id": 9
-    },
-    {
-      "title": "aaaaaaaaaaaaaaa",
-      "isCompleted": false,
-      "id": 10
-    },
-    {
-      "title": "bbbbbbbb",
-      "isCompleted": false,
-      "id": 11
-    },
-    {
-      "title": "12214234",
-      "isCompleted": false,
-      "id": 12
-    },
-    {
-      "title": "12214234ew",
-      "isCompleted": false,
-      "id": 13
-    },
-    {
-      "title": "wrwre",
-      "isCompleted": false,
-      "id": 14
-    },
-    {
-      "title": "zzzzzzzzzzz",
-      "isCompleted": false,
-      "id": 15
-    },
-    {
-      "title": "wewrwewd",
-      "isCompleted": false,
-      "id": 16
-    },
-    {
-      "title": "bbbbbbbbbbb",
-      "isCompleted": false,
-      "id": 17
-    },
-    {
-      "title": "აააააააააა",
-      "isCompleted": false,
-      "id": 18
-    },
-    {
-      "title": "ბბბბბბბბბ",
-      "isCompleted": false,
-      "id": 19
+      "tag": "other",
+      "id": 3
     }
   ]
 }
