@@ -1,0 +1,50 @@
+.modal {
+    background-color: white;
+    position: fixed;
+    width: 524px;
+    height: 371px;
+    border: "1px solid #D2D2D2";
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%)
+}
+.modalHeader {
+    text-align: center
+}
+
+.modalInput {
+    margin-left: 20px;
+    width: 90%;
+}
+
+.addTask {
+    width: 30%;
+    color: white;
+}
+
+.notActive {
+    background-color: #D3D3D3;
+}
+
+.active {
+    background-color: #3C86F4;
+}
+
+.cancel {
+    background-color: white;
+    width: 30%;
+    color: #0053CF;
+}
+
+.buttonsWrapper {
+    text-align: center;
+    margin: 150px 0px 0px -40px;
+}
+
+.shown {
+    display: block;
+}
+
+.hidden {
+    display: none;
+}
