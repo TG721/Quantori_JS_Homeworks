@@ -1,0 +1,13 @@
+.inLineWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    height: 100%;
+  }
+  
+  .inLineWrapper > :last-child {
+    margin: auto;
+  
+  }
+  

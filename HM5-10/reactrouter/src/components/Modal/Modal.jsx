@@ -42,11 +42,13 @@ export default function Modal(props){
             .then(response => response.json())
             .then(() =>
             {
-                console.log("success");
+                console.log("success"); 
                 props.setShowModal(false);
-        
-                setText(''); // Clear the input text
+
+
                 setIsTextEntered(false); // Reset the state of isTextEntered
+                setText(''); // Clear the input text
+
             })
         .catch(error => console.log(error))
         }
@@ -59,7 +61,7 @@ export default function Modal(props){
         <Overlay className={`overlay ${showOverlay ? 'shown' : 'hidden'}`} />
         <div className={props.className}>
             <Header className="modalHeader" title="Add New Task" importance="h3" />
-            <Input placeholder="Task Title" className="modalInput" value={text} onChange={handleInputChange} />
+            <Input placeholder="Task Title" className="modalInput" text={text} onChange={handleInputChange} />
             <div className="buttonsWrapper">
             <Button className="button cancel" title="Cancel" onClick={() => props.setShowModal(false)} />
             <Button className={`button addTask ${isTextEntered ? 'active' : 'notActive'}`} title="Add Task" onClick={handleTaskAddition} />
