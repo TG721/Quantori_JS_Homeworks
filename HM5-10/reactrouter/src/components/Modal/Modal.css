@@ -24,11 +24,11 @@
 
 .notActive {
     background-color: #D3D3D3;
+    cursor: default !important; 
 }
 
 .active {
     background-color: #3C86F4;
-    mouse
 }
 
 .cancel {
