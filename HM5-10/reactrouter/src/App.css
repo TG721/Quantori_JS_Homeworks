@@ -1,5 +1,6 @@
 body {
   margin-left: 20px;
+  background-color: white;
 }
 
 ul {
@@ -7,3 +8,6 @@ ul {
   
 }
 
+.selected {
+  border: 1.5px dashed black;
+}

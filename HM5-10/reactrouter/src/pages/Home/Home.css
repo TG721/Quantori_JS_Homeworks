@@ -10,4 +10,14 @@
     margin: auto;
   
   }
+
+  .tagAndTasksWrapper {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .dropdown {
+    margin-left: 200px;
+    margin-top: 15px;
+  }
   

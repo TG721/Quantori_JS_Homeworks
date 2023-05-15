@@ -9,7 +9,9 @@ export default function ListOfTasks(props){
     const [error, setError] = useState(null);
 
     const filteredTasks = tasks.filter((task) =>
-    task.title.toLowerCase().includes(props.searchText.toLowerCase())
+    task.title.toLowerCase().includes(props.searchText.toLowerCase()) &&
+    (props.selectedTag === 'No Filter' || task.tag === props.selectedTag)
+
     );
 
     function handleTaskCompletion(id, isCompleted, taskTitle) {
@@ -59,7 +61,7 @@ export default function ListOfTasks(props){
       }
       else {
         return (
-            <>
+            <div className="tasksWrapper">
             <Header className="listHeader" title="All tasks" importance="h3" />
             <ul className="listedTasks">
             {filteredTasks.filter(task => !task.isCompleted).map(task => (
@@ -72,7 +74,7 @@ export default function ListOfTasks(props){
                 <Task key={task.id} id={task.id} title={task.title} isCompleted={task.isCompleted} tag={task.tag} onTaskCompletion={handleTaskCompletion} />
             ))}
             </ul>
-            </>
+            </div>
         )
       }
 
