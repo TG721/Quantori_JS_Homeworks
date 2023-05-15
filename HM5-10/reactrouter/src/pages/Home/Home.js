@@ -13,13 +13,14 @@ import './Home.css'
 
 function Home() {
   const location = useLocation();
+  const pathname = location.pathname;
+  const tagParam = pathname.split('/tasks/')[1] 
+
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const [selectedTag, setSelectedTag] = useState('No Filter');
+  const [selectedTag, setSelectedTag] = useState((tagParam==="" ||  tagParam===undefined) ? 'No Filter' : tagParam);
+  console.log(tagParam)
 
-
-  const pathname = location.pathname;
-  const tagParam = pathname.split('/tasks/')[1];
 
   useEffect(() => {
     if (tagParam) {
