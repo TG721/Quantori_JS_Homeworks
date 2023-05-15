@@ -28,3 +28,11 @@
 .tagandNameWrapper > .tag {
     margin-top: 5px;
 }
+
+  
+@media only screen and (max-width: 638px) {
+    .taskLabel {
+      width: 300px;
+    }
+  }
+  

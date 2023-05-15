@@ -25,3 +25,9 @@
 .newTaskButton:hover {
     background-color: #3C86F459;
 }
+
+@media only screen and (max-width: 570px) {
+    .button {
+      font-size: 12px;
+    }
+  }

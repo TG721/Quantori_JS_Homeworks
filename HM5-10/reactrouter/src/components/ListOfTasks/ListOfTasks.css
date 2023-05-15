@@ -7,3 +7,16 @@
 .tasksWrapper {
     width: 500px;
 }
+
+  
+@media only screen and (max-width: 658px) {
+    .tasksWrapper {
+      width: 400px;
+    }
+  }
+  
+@media only screen and (max-width: 570px) {
+    .tasksWrapper {
+        width: 350px;
+    }
+  }
