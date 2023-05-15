@@ -6,7 +6,7 @@ import Weather from '../../components/Weather/Weather';
 import ListOfTasks from '../../components/ListOfTasks/ListOfTasks'
 import Modal from '../../components/Modal/Modal';
 import Dropdown from '../../components/Dropdown/Dropdown';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, useSearchParams } from 'react-router-dom';
 
 import './Home.css'
 
@@ -15,11 +15,16 @@ function Home() {
   const location = useLocation();
   const pathname = location.pathname;
   const tagParam = pathname.split('/tasks/')[1] 
+  const [selectedTag, setSelectedTag] = useState((tagParam==="" ||  tagParam===undefined) ? 'No Filter' : tagParam);
+  // console.log(tagParam)
 
   const [showModal, setShowModal] = useState(false);
-  const [searchText, setSearchText] = useState('');
-  const [selectedTag, setSelectedTag] = useState((tagParam==="" ||  tagParam===undefined) ? 'No Filter' : tagParam);
-  console.log(tagParam)
+  const [searchURLParams, setSearchURLParams] = useSearchParams();
+
+  const urlQValue = searchURLParams.get('q');
+  const [searchText, setSearchText] = useState((urlQValue==="" || urlQValue===null) ? "" : urlQValue );
+
+
 
 
   useEffect(() => {
@@ -39,6 +44,12 @@ function Home() {
     }
   }
 
+  function handleSearchChange(event){
+    const newQueryValue = event.target.value;
+    setSearchText(newQueryValue);
+    setSearchURLParams({q : newQueryValue});
+  }
+
 
   return (
     <div className="home">
@@ -47,7 +58,7 @@ function Home() {
       <Weather location="Tbilisi"/>
       </div>
       <div className='inLineWrapper'>
-      <Input placeholder="Search Task" className="search input"  text={searchText} onChange={(event) => setSearchText(event.target.value)}/> 
+      <Input placeholder="Search Task" className="search input"  text={searchText} onChange={handleSearchChange}/> 
       <Button title="+ New Task" className="newTaskButton button" onClick={() => setShowModal(true)}/>
       </div >
       <div className='tagAndTasksWrapper'>
