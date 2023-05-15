@@ -4,7 +4,7 @@ import './Dropdown.css';
 
 
 export default function Dropdown(props) {
-  const [selectedOption, setSelectedOption] = useState(props.tagList[0]);
+  const [selectedOption, setSelectedOption] = useState(props.selectedOption || props.tagList[0]);
 
   function handleOptionClick(option) {
     setSelectedOption(option);

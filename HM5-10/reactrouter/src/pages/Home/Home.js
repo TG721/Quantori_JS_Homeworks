@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Button from '../../components/Button/Button';
 import Header from '../../components/Header/Header';
 import Input from '../../components/Input/Input';
@@ -6,17 +6,38 @@ import Weather from '../../components/Weather/Weather';
 import ListOfTasks from '../../components/ListOfTasks/ListOfTasks'
 import Modal from '../../components/Modal/Modal';
 import Dropdown from '../../components/Dropdown/Dropdown';
+import { useNavigate, useLocation } from 'react-router-dom';
+
 import './Home.css'
 
 
 function Home() {
+  const location = useLocation();
   const [showModal, setShowModal] = useState(false);
   const [searchText, setSearchText] = useState('');
-  const [selectedTag, setSelectedTag] = useState('');
+  const [selectedTag, setSelectedTag] = useState('No Filter');
+
+
+  const pathname = location.pathname;
+  const tagParam = pathname.split('/tasks/')[1];
+
+  useEffect(() => {
+    if (tagParam) {
+      setSelectedTag(tagParam);
+    }
+  }, [tagParam]);
+
+  const navigate = useNavigate();
 
   function handleTagSelect(tag) {
     setSelectedTag(tag);
+    if (tag === 'No Filter') {
+      navigate('/tasks');
+    } else {
+      navigate(`/tasks/${tag}`);
+    }
   }
+
 
   return (
     <div className="home">
@@ -30,7 +51,7 @@ function Home() {
       </div >
       <div className='tagAndTasksWrapper'>
       <ListOfTasks searchText={searchText} selectedTag={selectedTag} />
-      <Dropdown tagList={['No Filter', 'health', 'work', 'home', 'other']} title="Filter by Tag" onSelect={handleTagSelect} />
+      <Dropdown tagList={['No Filter', 'health', 'work', 'home', 'other']} title="Filter by Tag" onSelect={handleTagSelect} selectedOption={ tagParam}/>
       </div>
       <Modal showModal={showModal} setShowModal={setShowModal} className={`modal ${showModal ? 'shown' : 'hidden'}`} />
     </div>

@@ -35,8 +35,8 @@
     cursor: pointer;
 }
   
-  .dropdown-content :first-child {  border-radius: 12px 12px 0 0;}
-  .dropdown-content :last-child {  border-radius: 0 0 12px 12px;}
+  .dropdown-content :first-child {  border-radius: 25px 25px 0 0;}
+  .dropdown-content :last-child {  border-radius: 0 0 25px 25px;}
   
 
   .dropdown:hover .dropdown-content {

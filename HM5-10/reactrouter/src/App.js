@@ -9,6 +9,7 @@ function App() {
   <Routes>
     <Route path="/" element={<Home />} />
     <Route path="/tasks" element={<Home />} />
+    <Route path="/tasks/:tag" element={<Home />} />
     <Route path="*" element={<Header title="Not Found" importance="h1"/>} />
   </Routes>
   )
