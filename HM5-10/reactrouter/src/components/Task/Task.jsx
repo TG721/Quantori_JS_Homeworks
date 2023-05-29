@@ -24,7 +24,7 @@ export default function Task(props){
         const newIsCompleted = event.target.checked;
         setIsCompleted(newIsCompleted);
         //callback
-        props.onTaskCompletion(props.id, newIsCompleted, props.title);
+        props.onTaskCompletion(props.id, newIsCompleted, props.title, props.tag);
       }
 
     return (

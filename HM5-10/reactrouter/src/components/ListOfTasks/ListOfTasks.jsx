@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { replaceTask } from '../../utils/replaceTask';
 import Header from '../Header/Header';
 import Task from "../Task/Task";
 import "./ListOfTasks.css"
@@ -7,6 +8,8 @@ import "./ListOfTasks.css"
 export default function ListOfTasks(props){
     const [tasks, setTasks] = useState([]);
     const [error, setError] = useState(null);
+    const [isLoading, setIsLoading] = useState(false);
+
 
     const filteredTasks = tasks.filter((task) =>
     task.title.toLowerCase().includes(props.searchText.toLowerCase()) &&
@@ -14,14 +17,14 @@ export default function ListOfTasks(props){
 
     );
 
-    function handleTaskCompletion(id, isCompleted, taskTitle) {
-        modifyTaskList(id, isCompleted, taskTitle);
+    function handleTaskCompletion(id, isCompleted, taskTitle, tag) {
+        modifyTaskList(id, isCompleted, taskTitle, tag);
     
       }
     
-      function modifyTaskList(passedId, isCompleted, taskTitle) {
+      function modifyTaskList(passedId, isCompleted, taskTitle, theTag) {
         //modify element in json server
-        const taskData = {id : passedId, title: taskTitle, isCompleted : true}
+        const taskData = {id : passedId, title: taskTitle, isCompleted : true, tag: theTag}
         console.log(taskData);
         fetch('http://localhost:3001/tasks/' + passedId, {
             method: 'PATCH', 
@@ -32,9 +35,9 @@ export default function ListOfTasks(props){
             })
             .then(response => response.json())
             .then(() => {
+              setTasks(replaceTask(tasks, taskData));
               console.log("data was successfuly modified");
               console.log("Checkbox is checked");
-
             })
             .catch(error => console.error(error))
             }
@@ -42,18 +45,22 @@ export default function ListOfTasks(props){
     useEffect(() => {
         async function fetchTasks() {
             try {
+                console.log('Fetching tasks...');
                 const response = await fetch(`http://localhost:3001/tasks`);
                 if (!response.ok) {
                   throw new Error('Failed to fetch tasks');
                 }
-                const tasks = await response.json();
-                setTasks(tasks);
+                const fetchedTasks = await response.json();
+                console.log(fetchedTasks);
+                console.log(tasks);
+                if(JSON.stringify(fetchedTasks) !== JSON.stringify(tasks)) 
+                setTasks(fetchedTasks);
               } catch (error) {
                 setError(error.message);
               }
         }
         fetchTasks();
-      }, [tasks]);
+      }, []);
 
       
       if (error) {
