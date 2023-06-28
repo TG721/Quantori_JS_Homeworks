@@ -24,6 +24,10 @@ function Home() {
   const urlQValue = searchURLParams.get('q');
   const [searchText, setSearchText] = useState((urlQValue==="" || urlQValue===null) ? "" : urlQValue );
 
+  const [newTask, setNewTask] = useState(null);
+  const handleTaskAdded = () => {
+    window.location.reload();
+  };
 
 
 
@@ -62,10 +66,10 @@ function Home() {
       <Button title="+ New Task" className="newTaskButton button" onClick={() => setShowModal(true)}/>
       </div >
       <div className='tagAndTasksWrapper'>
-      <ListOfTasks searchText={searchText} selectedTag={selectedTag} />
+      <ListOfTasks searchText={searchText} selectedTag={selectedTag}  />
       <Dropdown tagList={['No Filter', 'health', 'work', 'home', 'other']} title="Filter by Tag" onSelect={handleTagSelect} selectedOption={ tagParam}/>
       </div>
-      <Modal showModal={showModal} setShowModal={setShowModal} className={`modal ${showModal ? 'shown' : 'hidden'}`} />
+      <Modal showModal={showModal} setShowModal={setShowModal} onTaskAdded={handleTaskAdded} className={`modal ${showModal ? 'shown' : 'hidden'}` } />
     </div>
   );
 }
